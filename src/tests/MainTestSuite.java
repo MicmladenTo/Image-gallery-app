@@ -37,8 +37,21 @@ public class MainTestSuite extends BaseTests {
 		wait.until(ExpectedConditions.visibilityOf(createGalleryPage.getPageTitle()));
 		assertEquals(createGalleryPage.getPageTitle().getText(), "CREATE GALLERY");
 		
-		createGalleryPage.createAGallery("Westie", "Nice westie pics");
+		createGalleryPage.createAGallery("Bestie", "Nice westie pics");
 		assertEquals(allGalleriesPage.getCreateGallery().getText(), "Create Gallery");
+	}
+	
+	@Test (priority = 3)
+	public void findUsersGallery() throws InterruptedException {
+		Thread.sleep(3000);
+		allGalleriesPage.getMyGalleries().click();
+
+		Thread.sleep(3000);
+
+		assertEquals(myGalleriesPage.getPageTitle().getText(), "MY GALLERIES");
+		
+		myGalleriesPage.getGalleryTitles().get(0).click();
+		Thread.sleep(3000);
 	}
 	
 	
