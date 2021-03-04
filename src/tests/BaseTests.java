@@ -9,6 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import pages.AllGalleriesPage;
+import pages.CreateGalleryPage;
 import pages.LoginPage;
 
 
@@ -22,6 +23,7 @@ public class BaseTests {
 	ExcelReader excelReader;
 	AllGalleriesPage allGalleriesPage;
 	LoginPage loginPage;
+	CreateGalleryPage createGalleryPage;
 
 	
 
@@ -34,7 +36,7 @@ public class BaseTests {
 		this.allGalleriesPage = new AllGalleriesPage(driver);
 		this.loginPage = new LoginPage(driver, allGalleriesPage);
 		this.excelReader = new ExcelReader("data/TCAndBugReports.xlsx");
-//		this.logInTests = new LogInTests();
+		this.createGalleryPage = new CreateGalleryPage(driver);
 //		this.addressTests = new AddressTests();
 //		this.addressPage = new AddressPage(js, driver);
 //		this.myInformationPage = new MyInformationPage(js, driver);
