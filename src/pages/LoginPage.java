@@ -14,6 +14,7 @@ AllGalleriesPage allGalleriesPage;
 	WebElement emailInput;
 	WebElement passwordInput;
 	WebElement submitButton;
+	WebElement pageTitle;
 	
 	
 	// Getters and setters
@@ -25,6 +26,9 @@ AllGalleriesPage allGalleriesPage;
 	}
 	public WebElement getSubmitButton() {
 		return driver.findElement(By.cssSelector("button[type='submit']"));
+	}
+	public WebElement getPageTitle() {
+		return driver.findElement(By.tagName("h1"));
 	}
 
 	// Constructor

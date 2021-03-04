@@ -37,7 +37,7 @@ public class MainTestSuite extends BaseTests {
 		wait.until(ExpectedConditions.visibilityOf(createGalleryPage.getPageTitle()));
 		assertEquals(createGalleryPage.getPageTitle().getText(), "CREATE GALLERY");
 		
-		createGalleryPage.createAGallery("Bestie", "Nice westie pics");
+		createGalleryPage.createAGallery(galleryName, galleryDescription);
 		assertEquals(allGalleriesPage.getCreateGallery().getText(), "Create Gallery");
 	}
 	
@@ -51,7 +51,23 @@ public class MainTestSuite extends BaseTests {
 		assertEquals(myGalleriesPage.getPageTitle().getText(), "MY GALLERIES");
 		
 		myGalleriesPage.getGalleryTitles().get(0).click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+		
+		String galleryName = excelReader.getData("Test cases - content", 12, 4).toUpperCase();
+		String h1 = galleryPage.getPageTitle().getText();
+		
+		assertEquals(h1, galleryName);
+	}
+	
+	@Test (priority = 4)
+	public void logOut() throws InterruptedException {
+		
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		
+		galleryPage.getLogOutButton().click();
+		
+		wait.until(ExpectedConditions.visibilityOf(loginPage.getEmailInput()));
+		assertEquals(loginPage.getPageTitle().getText(), "PLEASE LOGIN");
 	}
 	
 	
